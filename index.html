@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TAPIOCA DA PRAÇA</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=The+Seasons&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        body { 
+            margin: 0; 
+            padding-top: 80px; 
+            font-family: sans-serif; 
+            background: url('cubes.png') repeat; 
+            background-size: 50px; 
+            color: #000; 
+        }
+
+        /* ====== HEADER ====== */
+        header { 
+            background: #000; 
+            padding: 10px 20px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: space-between; 
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        header img { height: 60px; }
+
+        header h1 { 
+            color: #fbb11a; 
+            margin: 0; 
+            font-family: 'The Seasons', serif; 
+            font-size: 2rem;
+        }
+
+        nav {
+            display: flex;
+            gap: 10px;
+        }
+
+        nav a { 
+            color: #fff; 
+            text-decoration: none; 
+            font-weight: bold; 
+        }
+
+        /* Botão menu - mobile */
+        .menu-toggle {
+            display: none;
+            font-size: 1.8rem;
+            color: #fbb11a;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* ====== HERO ====== */
+        .hero { 
+            text-align: center; 
+            background: url('tapi.jpg') no-repeat center/cover; 
+            height: 70vh; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            color: #fff; 
+        }
+
+        .hero h2 { 
+            background: rgba(0,0,0,0.6); 
+            padding: 20px; 
+            border-radius: 10px; 
+            font-size: clamp(1.2rem, 5vw, 1.8rem);
+        }
+
+        section { padding: 50px 20px; text-align: center; }
+        h2 { color: #fbb11a; }
+
+        /* ====== CARROSSEL ====== */
+        .carousel { 
+            position: relative; 
+            width: 90%; 
+            max-width: 500px; 
+            margin: 20px auto; 
+            overflow: hidden; 
+            border-radius: 10px; 
+            box-shadow: 0px 4px 6px rgba(0,0,0,0.3); 
+        }
+
+        .carousel-track { display: flex; transition: transform 0.5s ease-in-out; }
+
+        .carousel-slide { 
+            flex-shrink: 0; 
+            width: 100%; 
+            height: auto; 
+        }
+        .carousel-slide img { 
+            width: 100%; 
+            height: auto; 
+            object-fit: cover; 
+            max-height: 350px;
+        }
+
+        .carousel button { 
+            position: absolute; 
+            top: 50%; 
+            transform: translateY(-50%); 
+            background: rgba(0, 0, 0, 0.5); 
+            color: #fff; 
+            border: none; 
+            padding: 10px; 
+            cursor: pointer; 
+            border-radius: 50%; 
+        }
+
+        .carousel .prev { left: 10px; }
+        .carousel .next { right: 10px; }
+
+        /* ====== VÍDEO ====== */
+        .video-container { max-width: 800px; margin: 20px auto; }
+        .video-container video { width: 100%; border-radius: 10px; }
+
+        /* ====== FOOTER ====== */
+        footer { 
+            background: #000; 
+            color: #fff; 
+            text-align: center; 
+            padding: 20px; 
+        }
+
+        footer a { 
+            color: #fbb11a; 
+            margin: 0 10px; 
+            font-size: 1.5rem; 
+            text-decoration: none; 
+            transition: 0.3s; 
+        }
+
+        footer a:hover { color: #fff; }
+
+        /* ====== RESPONSIVIDADE ====== */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column; /* Empilha os itens verticalmente */
+                align-items: center; /* Centraliza os itens */
+                padding: 10px;
+            }
+
+            header img {
+                height: 50px; /* Diminui a altura da logo */
+                margin-bottom: 5px; /* Adiciona espaçamento entre a logo e o título */
+            }
+
+            header h1 { 
+                font-size: 1.5rem; /* Diminui o tamanho do título */
+                margin: 5px 0 10px 0;
+                white-space: normal;
+                text-align: center;
+                width: 100%;
+            }
+
+            .menu-toggle {
+                display: block;
+                position: absolute; /* Posição absoluta para o botão */
+                top: 15px;
+                right: 15px;
+                font-size: 1.5rem;
+            }
+            
+            nav { 
+                display: none;
+                flex-direction: column;
+                background: #000;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                text-align: center;
+                padding: 10px 0;
+            }
+            nav a {
+                display: block;
+                padding: 10px;
+                border-top: 1px solid #333;
+            }
+            
+            nav.active {
+                display: flex;
+            }
+
+            .hero h2 { 
+                padding: 10px; 
+                font-size: 1.2rem;
+            }
+            
+            .carousel-slide img {
+                max-height: 200px;
+            }
+
+            body {
+                padding-top: 140px; /* Aumenta o padding para acomodar a altura do header reestruturado */
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="logo.png" alt="logo">
+        <h1>TAPIOCA DA PRAÇA</h1>
+        <button class="menu-toggle"><i class="fas fa-bars"></i></button>
+        <nav>
+            <a href="#cardapio">Cardápio</a>
+            <a href="#localizacao">Localização</a>
+            <a href="#sobre">Sobre</a>
+            <a href="#contato">Contato</a>
+            <a href="#galeria">...</a>
+        </nav>
+    </header>
+
+    <div class="hero">
+        <h2>O sabor da melhor tapioca artesanal!</h2>
+    </div>
+
+    <section id="cardapio">
+        <h2>Cardápio</h2>
+
+        <h3>Doces</h3>
+        <div class="carousel" id="carousel-doces">
+            <div class="carousel-track">
+                <div class="carousel-slide"><img src="d1.jpg" alt="Tapioca doce 1"></div>
+                <div class="carousel-slide"><img src="d2.jpg" alt="Tapioca doce 2"></div>
+                <div class="carousel-slide"><img src="d3.jpg" alt="Tapioca doce 3"></div>
+            </div>
+            <button class="prev">&#10094;</button>
+            <button class="next">&#10095;</button>
+        </div>
+
+        <h3>Salgadas</h3>
+        <div class="carousel" id="carousel-salgadas">
+            <div class="carousel-track">
+                <div class="carousel-slide"><img src="s1.jpg" alt="Tapioca salgada 1"></div>
+                <div class="carousel-slide"><img src="s2.jpg" alt="Tapioca salgada 2"></div>
+                <div class="carousel-slide"><img src="s3.jpg" alt="Tapioca salgada 3"></div>
+            </div>
+            <button class="prev">&#10094;</button>
+            <button class="next">&#10095;</button>
+        </div>
+
+        <h3>Veganas</h3>
+        <div class="carousel" id="carousel-veganas">
+            <div class="carousel-track">
+                <div class="carousel-slide"><img src="v1.jpg" alt="Tapioca vegana 1"></div>
+                <div class="carousel-slide"><img src="v2.jpg" alt="Tapioca vegana 2"></div>
+            </div>
+            <button class="prev">&#10094;</button>
+            <button class="next">&#10095;</button>
+        </div>
+    </section>
+
+    <section id="galeria">
+        <h2>Clientes</h2>
+        <div class="carousel" id="carousel-clientes">
+            <div class="carousel-track">
+                <div class="carousel-slide"><img src="c1.jpg" alt="Cliente feliz 1"></div>
+                <div class="carousel-slide"><img src="c2.jpg" alt="Cliente feliz 2"></div>
+                <div class="carousel-slide"><img src="c3.jpg" alt="Cliente feliz 3"></div>
+            </div>
+            <button class="prev">&#10094;</button>
+            <button class="next">&#10095;</button>
+        </div>
+    </section>
+
+    <section id="localizacao">
+        <h2>Localização</h2>
+        <div class="video-container">
+            <video controls autoplay muted loop>
+                <source src="loc.mp4" type="video/mp4">
+                Seu navegador não suporta vídeos HTML5.
+            </video>
+        </div>
+    </section>
+
+    <section id="sobre">
+        <h2>Sobre Nós</h2>
+        <img src="massa.jpg" alt="Massa artesanal" style="max-width:400px; border-radius:10px;">
+        <p><b>Feita com massa artesanal, garantindo sabor, maciez e qualidade.</b></p>
+        <ul style="text-align:left; max-width:600px; margin:auto;">
+            <li><b>+ natural:</b> sem conservantes ou aditivos químicos.</li>
+            <li><b>Digestão leve:</b> tapioca é naturalmente livre de glúten.</li>
+            <li><b>Saudável:</b> rica em carboidratos de boa qualidade.</li>
+            <li><b>Versátil:</b> combina com recheios doces, salgados ou veganos.</li>
+        </ul>
+    </section>
+
+    <section id="contato">
+        <h2>Contato</h2>
+        <p><b>Entre em contato pelo Instagram ou TikTok clicando nos ícones abaixo.</b></p>
+    </section>
+
+    <footer>
+        <div>
+            <a href="https://www.instagram.com/tapiocadapraca/" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.tiktok.com/@tapiocadapraca?_t=ZM-8zDOxiBKDZ7&_r=1" target="_blank"><i class="fab fa-tiktok"></i></a>
+            <a href="https://share.google/Uh2my5tQqnZCIEyvX" target="_blank"><i class="fas fa-map-marker-alt"></i></a>
+        </div>
+        <p>&copy; 2025 TAPIOCA DA PRAÇA - Todos os direitos reservados</p>
+    </footer>
+
+    <script>
+        const toggle = document.querySelector(".menu-toggle");
+        const nav = document.querySelector("nav");
+        toggle.addEventListener("click", () => {
+            nav.classList.toggle("active");
+        });
+
+        function iniciarCarrossel(id) {
+            const carousel = document.getElementById(id);
+            const track = carousel.querySelector('.carousel-track');
+            const slides = carousel.querySelectorAll('.carousel-slide');
+            const prevBtn = carousel.querySelector('.prev');
+            const nextBtn = carousel.querySelector('.next');
+            let index = 0;
+
+            function atualizar() {
+                const slideWidth = slides[0].offsetWidth;
+                track.style.transform = `translateX(${-index * slideWidth}px)`;
+            }
+
+            function proximo() {
+                index = (index + 1) % slides.length;
+                atualizar();
+            }
+
+            function anterior() {
+                index = (index - 1 + slides.length) % slides.length;
+                atualizar();
+            }
+
+            nextBtn.addEventListener('click', proximo);
+            prevBtn.addEventListener('click', anterior);
+            setInterval(proximo, 3000);
+
+            window.addEventListener('resize', atualizar);
+        }
+
+        iniciarCarrossel('carousel-doces');
+        iniciarCarrossel('carousel-salgadas');
+        iniciarCarrossel('carousel-veganas');
+        iniciarCarrossel('carousel-clientes');
+    </script>
+</body>
+</html>
