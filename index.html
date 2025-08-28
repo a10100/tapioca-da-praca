@@ -52,7 +52,6 @@
             font-weight: bold; 
         }
 
-        /* Botão menu - mobile */
         .menu-toggle {
             display: none;
             font-size: 1.8rem;
@@ -124,8 +123,14 @@
         .carousel .next { right: 10px; }
 
         /* ====== VÍDEO ====== */
-        .video-container { max-width: 800px; margin: 20px auto; }
-        .video-container video { width: 100%; border-radius: 10px; }
+        .video-container { 
+            max-width: 800px; 
+            margin: 20px auto; 
+        }
+        .video-container video { 
+            width: 100%; 
+            border-radius: 10px; 
+        }
 
         /* ====== FOOTER ====== */
         footer { 
@@ -148,18 +153,18 @@
         /* ====== RESPONSIVIDADE ====== */
         @media (max-width: 768px) {
             header {
-                flex-direction: column; /* Empilha os itens verticalmente */
-                align-items: center; /* Centraliza os itens */
+                flex-direction: column;
+                align-items: center;
                 padding: 10px;
             }
 
             header img {
-                height: 50px; /* Diminui a altura da logo */
-                margin-bottom: 5px; /* Adiciona espaçamento entre a logo e o título */
+                height: 50px;
+                margin-bottom: 5px;
             }
 
             header h1 { 
-                font-size: 1.5rem; /* Diminui o tamanho do título */
+                font-size: 1.5rem;
                 margin: 5px 0 10px 0;
                 white-space: normal;
                 text-align: center;
@@ -168,7 +173,7 @@
 
             .menu-toggle {
                 display: block;
-                position: absolute; /* Posição absoluta para o botão */
+                position: absolute;
                 top: 15px;
                 right: 15px;
                 font-size: 1.5rem;
@@ -205,7 +210,7 @@
             }
 
             body {
-                padding-top: 140px; /* Aumenta o padding para acomodar a altura do header reestruturado */
+                padding-top: 140px;
             }
         }
     </style>
@@ -280,8 +285,9 @@
     <section id="localizacao">
         <h2>Localização</h2>
         <div class="video-container">
+            <!-- Vídeo do Google Drive -->
             <video controls autoplay muted loop>
-                <source src="loc.mp4" type="video/mp4">
+                <source src="https://drive.google.com/uc?export=download&id=16q31YokLqZoTBIvSTBeqPYSERw-vWb6s" type="video/mp4">
                 Seu navegador não suporta vídeos HTML5.
             </video>
         </div>
